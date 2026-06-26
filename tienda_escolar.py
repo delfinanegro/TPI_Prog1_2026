@@ -1,6 +1,6 @@
 # =========================
-# TIENDA ESCOLAR - ETAPA 2
-# Agrego estado del carrito
+# TIENDA ESCOLAR - ETAPA 3
+# Persistencia en archivo
 # =========================
 
 productos = ["Cuaderno", "Lápiz", "Goma", "Regla"]
@@ -17,7 +17,7 @@ def comprar_producto(carrito, total, presupuesto):
     mostrar_productos()
 
     try:
-        opcion = int(input("\nSeleccione un producto: ")) - 1
+        opcion = int(input("\nSeleccione: ")) - 1
 
         if 0 <= opcion < len(productos):
             precio = precios[opcion]
@@ -25,24 +25,22 @@ def comprar_producto(carrito, total, presupuesto):
             if total + precio <= presupuesto:
                 carrito.append(productos[opcion])
                 total += precio
-                print("✔ Producto agregado")
+                print("✔ Agregado")
             else:
-                print("✘ Sin presupuesto suficiente")
-        else:
-            print("✘ Opción inválida")
+                print("✘ Sin presupuesto")
 
     except ValueError:
-        print("✘ Error de entrada")
+        print("Error")
 
     return carrito, total
 
 
-# NUEVO: estado del carrito
-def ver_estado(carrito, total, presupuesto):
-    print("\n--- ESTADO ---")
-    print("Productos:", carrito if carrito else "Vacío")
-    print("Total:", total)
-    print("Saldo:", presupuesto - total)
+def guardar_compra(carrito, total):
+    # NUEVO: guardado en archivo
+    with open("compras.txt", "a") as archivo:
+        archivo.write(f"Productos: {carrito}\n")
+        archivo.write(f"Total: {total}\n")
+        archivo.write("----------------\n")
 
 
 def juego_tienda():
@@ -53,25 +51,19 @@ def juego_tienda():
     print("TIENDA ESCOLAR")
 
     while True:
-        print("\n1. Ver productos")
-        print("2. Comprar")
-        print("3. Ver estado")
+        print("\n1. Comprar")
         print("0. Salir")
 
         try:
             op = int(input("Opción: "))
 
             if op == 1:
-                mostrar_productos()
-
-            elif op == 2:
                 carrito, total = comprar_producto(carrito, total, presupuesto)
 
-            elif op == 3:
-                ver_estado(carrito, total, presupuesto)
-
             elif op == 0:
-                print("Saliendo...")
+                # NUEVO: guardo al salir
+                guardar_compra(carrito, total)
+                print("Guardado en archivo")
                 break
 
         except ValueError:
