@@ -1,18 +1,13 @@
-
-# Librería para seleccionar un animal al azar
 import random
 
-# Lista de animales disponibles para jugar
 animales = ["PERRO", "GATO", "LEON", "JIRAFA", "MONO", "OSO", "TIGRE"]
 
-# Selecciona un animal al azar de la lista
+# 🔧 Asegura que el archivo de ranking exista desde el inicio
+open("ranking_animales.txt", "a").close()
+
 def seleccionar_animal():
     return random.choice(animales)
 
-# Muestra el estado actual del juego
-# Recorre el animal letra por letra y muestra las adivinadas
-# Las que todavía no fueron descubiertas aparecen como "_"
-# Devuelve la cantidad de letras encontradas
 def mostrar_estado(animal, letras):
     completas = 0
 
@@ -26,29 +21,25 @@ def mostrar_estado(animal, letras):
             print("_", end=" ")
 
     print()
-
     return completas
 
-# Guarda el resultado de la partida en un archivo de texto
 def guardar_partida(usuario, puntaje):
-
-    with open("ranking.txt", "a") as archivo:
+    with open("ranking_animales.txt", "a") as archivo:
         archivo.write(f"{usuario},{puntaje}\n")
 
-# Muestra el ranking guardado en el archivo
 def ver_ranking():
 
-    print("\n------ RANKING ------")
+    print("\n------ RANKING ANIMALES ------")
 
-    try:
-        with open("ranking.txt", "r") as archivo:
-            for linea in archivo:
+    with open("ranking_animales.txt", "r") as archivo:
+        contenido = archivo.readlines()
+
+        if len(contenido) == 0:
+            print("No hay partidas todavía.")
+        else:
+            for linea in contenido:
                 print(linea.strip())
 
-    except FileNotFoundError:
-        print("Todavía no hay partidas registradas.")
-
-# Muestra el resultado final de la partida
 def ver_resultado(animal, puntaje):
 
     print("\n..............................")
@@ -64,7 +55,6 @@ def ver_resultado(animal, puntaje):
 
     print("..............................")
 
-# Función principal del juego
 def jugar(usuario):
 
     animal = seleccionar_animal()
@@ -88,6 +78,10 @@ def jugar(usuario):
 
         letra = input("Ingrese una letra: ").upper()
 
+        if not letra.isalpha() or len(letra) != 1:
+            print("Error: ingrese SOLO una letra.")
+            continue
+
         if letra not in letras:
 
             letras.append(letra)
@@ -107,7 +101,6 @@ def jugar(usuario):
     guardar_partida(usuario, puntaje)
     ver_resultado(animal, puntaje)
 
-# Menú principal del programa
 def juego_animales(usuario):
 
     print("\n༘˚⋆ 🐾 ADIVINA EL ANIMAL 🐾 ༘˚⋆")
@@ -139,7 +132,6 @@ def juego_animales(usuario):
         except ValueError:
             print("Entrada inválida.")
 
-# INICIO DEL PROGRAMA
 if __name__ == "__main__":
     usuario = input("Ingrese su nombre: ")
     juego_animales(usuario)
