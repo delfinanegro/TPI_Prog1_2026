@@ -1,39 +1,60 @@
-# Importamos el archivo donde están los juegos
+# Importamos los archivos donde están los juegos
 from tienda_escolar import juego_tienda
 from carrera_de_numeros import juego_matematica
 from animal_final import juego_animales
+from juego_capitales_final import juego_capitales
 
 
-#Crear funcion para infgresar nombre de usuario del jugador
-# Creamos un menú para que el usuario pueda elegir qué juego jugar
+# Bienvenida al programa
+print("══════════════════════════════════════")
+print("        🎮 PLAY.IN EDUGAMES 🎮")
+print("══════════════════════════════════════")
 
-print("Bienvenido a Play.In EduGames")
-usuario = input("Por favor, ingresa tu nombre de usuario: ")
+# Solicitamos el nombre del usuario una sola vez
+usuario = input("\n Ingresá tu nombre de usuario: ")
 
+
+# Función que muestra el menú principal
 def menu():
-    print("--- Play.In EduGames ---")
-    print('1. Jugar a la "Tienda Escolar"')
-    print('2. Jugar a "Adivina el Animal"')
-    print('3. Jugar a "Capitales de América"')
-    print('4. Jugar a la "Carrera de Números"')
-    print("0. Salir")
-    opcion = input("Elegí una opción: ")
-    
+
+    print("\n══════════════════════════════════════")
+    print("           MENÚ PRINCIPAL")
+    print("══════════════════════════════════════")
+
+    print("1. 🛒 Tienda Escolar")
+    print("2. 🐾 Adivina el Animal")
+    print("3. 🌎 Capitales de América")
+    print("4. 🔢 Carrera de Números")
+    print("0. 🚪 Salir")
+
+    opcion = input("\nSeleccione una opción: ")
+
+    # Según la opción elegida se ejecuta el juego correspondiente
 
     if opcion == "1":
         juego_tienda()
-    if opcion == "2":
-        juego_animales()
-    if opcion == "3":
-        print("Capitales de América")
-    if opcion == "4":
-        juego_matematica(usuario)
-    if opcion == "0":
-        print("Gracias por jugar. ¡Hasta luego!")
-    else:
-        print("Opción inválida. Por favor, elige una opción del 1 al 4.")
-        menu()  # Llamamos al menú nuevamente para que el usuario pueda elegir otra opción      
+        menu()      # Al finalizar el juego vuelve al menú
 
-# Ejecutamos el menú
+    elif opcion == "2":
+        juego_animales(usuario)
+        menu()
+
+    elif opcion == "3":
+        juego_capitales(usuario)
+        menu()
+
+    elif opcion == "4":
+        juego_matematica(usuario)
+        menu()
+
+    elif opcion == "0":
+        print("\n¡Gracias por jugar en Play.In EduGames! ") #algun emoji?
+
+    else:
+        print("\nOpción inválida. Por favor, elegí una opción del 0 al 4.")
+        menu()      # Si se equivoca, vuelve a mostrar el menú
+
+
+# Punto de entrada del programa
 if __name__ == "__main__":
     menu()

@@ -114,7 +114,7 @@ def juego_tienda():
                     if ver == "si":
                         ver_ticket(carrito, total)
                 print("\nCompra finalizada.")
-                print("\n¡Gracias por comprar en la tienda escolar!")
+                print("\n¡Gracias por jugar a la tienda escolar!")
                 return
             else:
                 print("Opción inválida.")
