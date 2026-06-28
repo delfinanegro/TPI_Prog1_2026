@@ -98,7 +98,7 @@ def juego_tienda():
         print("\n1. VER PRODUCTOS")
         print("2. COMPRAR PRODUCTO")
         print("3. VER ESTADO DEL CARRITO")
-        print("0. SALIR")
+        print("0. VOLVER AL MENÚ PRINCIPAL") 
         try:
             opcion = int(input("Seleccione una opción: "))
             if opcion == 1:
@@ -115,7 +115,7 @@ def juego_tienda():
                         ver_ticket(carrito, total)
                 print("\nCompra finalizada.")
                 print("\n¡Gracias por comprar en la tienda escolar!")
-                break
+                return
             else:
                 print("Opción inválida.")
         except ValueError:
