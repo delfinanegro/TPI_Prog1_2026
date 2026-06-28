@@ -154,7 +154,7 @@ def juego_animales():
         print("\n───────── MENÚ ─────────")
         print("1. JUGAR")
         print("2. VER RANKING")
-        print("0. SALIR")
+        print("0. VOLVER AL MENU PRINCIPAL")
 
         try:
 
@@ -168,7 +168,7 @@ def juego_animales():
 
             elif opcion == 0:
                 print("\n¡Gracias por jugar!")
-                break
+                return
 
             else:
                 print("Opción inválida.")
