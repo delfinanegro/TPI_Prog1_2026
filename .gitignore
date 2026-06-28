@@ -1,1 +1,5 @@
 __pycache__/
+*.pyc
+compras.txt
+ranking.txt
+ranking_animales.txt
