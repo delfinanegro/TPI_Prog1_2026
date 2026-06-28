@@ -2,7 +2,7 @@ import random
 
 animales = ["PERRO", "GATO", "LEON", "JIRAFA", "MONO", "OSO", "TIGRE"]
 
-# 🔧 Asegura que el archivo de ranking exista desde el inicio
+# Asegura que el archivo de ranking exista desde el inicio
 open("ranking_animales.txt", "a").close()
 
 def seleccionar_animal():
