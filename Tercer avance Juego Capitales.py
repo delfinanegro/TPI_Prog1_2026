@@ -134,9 +134,9 @@ def menu_principal():
 
     while opcion != 0:
 
-        print("\n1 - Jugar a Capitales de América Latina")
-        print("2 - Ver Ranking")
-        print("0 - Salir")
+        print("\n1 - JUGAR A CAPITALES DE AMÉRICA LATINA")
+        print("2 - VER RANKING")
+        print("0 - VOLVER AL MENÚ PRINCIPAL")
 
         try:
             opcion = int(input("\nIngrese una opción (1, 2 o 0): "))
@@ -154,7 +154,7 @@ def menu_principal():
                 print("🗺️   Gracias por jugar 🗺️")
                 print("¡Hasta la próxima!")
                 print("══════════════════════════════")
-                break
+                return
 
             else:
                 print("Opción inválida.")
