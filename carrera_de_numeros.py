@@ -1,5 +1,4 @@
 import random
-import time
 
 def seleccionar_dificultad():
     """Solicita y valida la dificultad del juego."""
@@ -7,13 +6,16 @@ def seleccionar_dificultad():
         print("\n--- SELECCIONA LA DIFICULTAD ---")
         print("1. Fácil (Sumas y Restas)")
         print("2. Intermedio (Tablas de Multiplicar)")
-        dificultad = int(input("Ingresa tu opción (1 o 2): "))
+        print("0. Volver al menú principal.")
         
         try:
-            if dificultad == 1 or dificultad == 2:
-                return dificultad
+            opcion = int(input("Ingresa tu opción: "))
+            if opcion == 1 or opcion == 2:
+                return opcion
+            elif opcion == 0:
+                return None
             else:
-                print("Por favor, elige una opción válida: 1 o 2.")
+                print("Por favor, elige una opción válida: 0, 1 o 2.")
         except ValueError:
             print("Error: Debes ingresar un número entero.")
 
@@ -43,3 +45,34 @@ def generar_operacion(dificultad):
         resultado_correcto = num1 * num2
         
     return pregunta, resultado_correcto
+
+def dibujar_pista(usuario, pos_jugador, pos_bot):
+    """Dibuja la pista de carreras en la consola."""
+    largo_pista = 5
+    print("\n" + "=" * 40)
+    
+    # LINEA DEL JUGADOR
+    pista_jugador = ["-"] * largo_pista
+    # # Reemplaza el guion ('-') por el emoji en el índice correspondiente a la posición del corredor
+    if pos_jugador < largo_pista:
+        pista_jugador[pos_jugador] = "🏃"
+    #Transforma la lista en una cadena de texto para mostrarla en la consola
+    pista_j_str = "".join(pista_jugador)
+    print(f" {usuario.upper()}: [{pista_j_str}] 🏁")
+    
+    # LINEA DEL BOT
+    pista_bot = ["-"] * largo_pista
+    if pos_bot < largo_pista:
+        pista_bot[pos_bot] = "🤖"
+    pista_b_str = "".join(pista_bot)
+    print(f" BOT    : [{pista_b_str}] 🏁")
+
+    print("=" * 40 + "\n")
+
+def juego_matematica(usuario):
+    """Función principal del juego de matemática."""
+    print(f'\n¡Bienvenido/a {usuario} a "La Carrera de números"!')
+    dificultad = seleccionar_dificultad()
+    pos_jugador = 0
+    pos_bot = 0
+    dibujar_pista(usuario, pos_jugador, pos_bot)
