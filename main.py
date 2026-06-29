@@ -48,7 +48,7 @@ def menu():
         menu()
 
     elif opcion == "0":
-        print("\n¡Gracias por jugar en Play.In EduGames! ") #algun emoji?
+        print("\n¡Gracias por jugar en Play.In EduGames! ")
 
     else:
         print("\nOpción inválida. Por favor, elegí una opción del 0 al 4.")

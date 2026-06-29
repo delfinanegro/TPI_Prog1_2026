@@ -1,0 +1,5 @@
+Usuario: angelina | Resultado: Perdió | Aciertos: 1
+Usuario: angelina | Resultado: Ganó | Aciertos: 5
+Usuario: angelina | Resultado: Ganó | Aciertos: 5
+Usuario: caro | Resultado: Ganó | Aciertos: 5
+Usuario: ange | Resultado: Ganó | Aciertos: 5
