@@ -52,7 +52,7 @@ def ver_estado(carrito, total, presupuesto):
     print("Saldo restante $", presupuesto - total)
  
 # Guarda el registro actualizado de la compra en un archivo de texto
-# Usa modo "w" (sobreescritura) para que siempre refleje el estado actual de la sesión
+# Utiliza el modo "a" (append) para agregar cada nueva compra al final del archivo, conservando el historial de compras anteriores.
 # El historial de sesiones anteriores se mantiene con un separador
 def guardar_compra(carrito, total):
     with open("compras.txt", "a") as archivo:
