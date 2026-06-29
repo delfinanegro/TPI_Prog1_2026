@@ -70,15 +70,6 @@ def dibujar_pista(usuario, pos_jugador, pos_bot):
 
     print("=" * 40 + "\n")
 
-def ranking(usuario, resultado, aciertos):
-    """Guarda las estadísticas de la partida en un archivo de texto."""
-    try:
-        with open("ranking_mate.txt", "a", encoding="utf-8") as archivo:
-            linea = f"Usuario: {usuario} | Resultado: {resultado} | Aciertos: {aciertos}\n"
-            archivo.write(linea)
-    except IOError:
-        print("Error al intentar guardar las estadísticas.")
-
 def mostrar_ranking():
     """Lee y muestra las estadísticas guardadas en el archivo de texto."""
     print("\n===========================================")
