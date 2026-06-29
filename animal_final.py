@@ -1,26 +1,22 @@
-<<<<<<< HEAD
 # Librería para seleccionar un animal al azar
-=======
->>>>>>> 4f875a6c5c748f81d62ff3b64687ade06a855fb4
 import random
 
+# Lista de animales disponibles para jugar
 animales = ["PERRO", "GATO", "LEON", "JIRAFA", "MONO", "OSO", "TIGRE"]
 
-<<<<<<< HEAD
 # Solicita el nombre del jugador
 def datos_usuario():
     usuario = input("Ingrese su nombre: ")
     return usuario
 
 # Selecciona un animal al azar de la lista
-=======
-# Asegura que el archivo de ranking exista desde el inicio
-open("ranking_animales.txt", "a").close()
-
->>>>>>> 4f875a6c5c748f81d62ff3b64687ade06a855fb4
 def seleccionar_animal():
     return random.choice(animales)
 
+# Muestra el estado actual del juego
+# Recorre el animal letra por letra y muestra las adivinadas
+# Las que todavía no fueron descubiertas aparecen como "_"
+# Devuelve la cantidad de letras encontradas
 def mostrar_estado(animal, letras):
     completas = 0
 
@@ -34,27 +30,22 @@ def mostrar_estado(animal, letras):
             print("_", end=" ")
 
     print()
+
     return completas
 
-<<<<<<< HEAD
 # Guarda el resultado de la partida en un archivo de texto
 # Se utiliza el modo "a" para agregar cada partida sin borrar las anteriores
-=======
->>>>>>> 4f875a6c5c748f81d62ff3b64687ade06a855fb4
 def guardar_partida(usuario, puntaje):
-    with open("ranking_animales.txt", "a") as archivo:
+
+    with open("ranking.txt", "a") as archivo:
         archivo.write(f"{usuario},{puntaje}\n")
 
-<<<<<<< HEAD
 # Muestra el ranking guardado en el archivo
 # Si el archivo no existe informa que todavía no hay partidas registradas
-=======
->>>>>>> 4f875a6c5c748f81d62ff3b64687ade06a855fb4
 def ver_ranking():
 
-    print("\n------ RANKING ANIMALES ------")
+    print("\n------ RANKING ------")
 
-<<<<<<< HEAD
     try:
         with open("ranking.txt", "r") as archivo:
 
@@ -66,17 +57,6 @@ def ver_ranking():
 
 # Muestra el resultado final de la partida
 # Indica el animal que salió y si el jugador ganó o perdió
-=======
-    with open("ranking_animales.txt", "r") as archivo:
-        contenido = archivo.readlines()
-
-        if len(contenido) == 0:
-            print("No hay partidas todavía.")
-        else:
-            for linea in contenido:
-                print(linea.strip())
-
->>>>>>> 4f875a6c5c748f81d62ff3b64687ade06a855fb4
 def ver_resultado(animal, puntaje):
 
     print("\n..............................")
@@ -92,11 +72,8 @@ def ver_resultado(animal, puntaje):
 
     print("..............................")
 
-<<<<<<< HEAD
 # Función principal del juego
 # Controla los intentos, las letras ingresadas y determina si el jugador gana o pierde
-=======
->>>>>>> 4f875a6c5c748f81d62ff3b64687ade06a855fb4
 def jugar(usuario):
 
     # Selecciona un animal al azar
@@ -135,14 +112,7 @@ def jugar(usuario):
         # Solicita una letra al jugador
         letra = input("Ingrese una letra: ").upper()
 
-<<<<<<< HEAD
         # Solo agrega la letra si todavía no fue ingresada
-=======
-        if not letra.isalpha() or len(letra) != 1:
-            print("Error: ingrese SOLO una letra.")
-            continue
-
->>>>>>> 4f875a6c5c748f81d62ff3b64687ade06a855fb4
         if letra not in letras:
 
             letras.append(letra)
@@ -170,11 +140,8 @@ def jugar(usuario):
     # Muestra el resultado final
     ver_resultado(animal, puntaje)
 
-<<<<<<< HEAD
 # Función principal del programa
 # Muestra el menú y permite acceder a las distintas opciones
-=======
->>>>>>> 4f875a6c5c748f81d62ff3b64687ade06a855fb4
 def juego_animales(usuario):
 
     print("\n༘˚⋆ 🐾 ADIVINA EL ANIMAL 🐾 ༘˚⋆")
@@ -205,9 +172,6 @@ def juego_animales(usuario):
         except ValueError:
             print("Entrada inválida.")
 
-<<<<<<< HEAD
 # Permite ejecutar el juego directamente sin necesidad de otro programa
-=======
->>>>>>> 4f875a6c5c748f81d62ff3b64687ade06a855fb4
 if __name__ == "__main__":
     juego_animales()
